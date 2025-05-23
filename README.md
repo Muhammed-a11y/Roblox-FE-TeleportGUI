@@ -4,11 +4,11 @@ A simple teleport GUI script for Roblox games. This script provides a basic inte
 
 # Features
 
-Basic GUI with teleport buttons
+Basic GUI with teleport buttons.
 
-Teleports player to specified parts in the workspace
+Teleports you to other players in the workspace.
 
-No external dependencies or complex setup
+No external dependencies or complex setup.
 
 # Installation
 
