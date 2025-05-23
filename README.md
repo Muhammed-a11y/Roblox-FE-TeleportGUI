@@ -14,7 +14,7 @@ No external dependencies or complex setup.
 
 Open your executor for roblox.
 
-Inject the executor into your roblox paste the script and run.
+Inject the executor into your roblox and paste "loadstring(game:HttpGet("https://raw.githubusercontent.com/Muhammed-a11y/Roblox-FE-TeleportGUI/refs/heads/main/TPGui.lua"))()" into your executor and run.
 
 Enter the name of player you want to teleport. (İt can also be display name.)
 
