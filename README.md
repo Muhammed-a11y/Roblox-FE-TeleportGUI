@@ -16,7 +16,7 @@ Open your executor for roblox.
 
 Inject the executor into your roblox paste the script and run.
 
-Enter the name of player you want to teleport. "İt can also be display name."
+Enter the name of player you want to teleport. (İt can also be display name.)
 
 
 # Feel free to use!
