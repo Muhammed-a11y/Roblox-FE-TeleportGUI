@@ -1,21 +1,21 @@
--- Services
+
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local StarterGui = game:GetService("StarterGui")
 
--- Player references
+
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
--- GUI Setup
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "TeleportUI"
 ScreenGui.Parent = PlayerGui
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Enabled = true
 
--- Main Frame
+
 local MainFrame = Instance.new("Frame")
 MainFrame.Name = "MainFrame"
 MainFrame.Size = UDim2.new(0, 300, 0, 90)
@@ -26,7 +26,7 @@ MainFrame.Parent = ScreenGui
 Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 12)
 Instance.new("UIStroke", MainFrame).Color = Color3.fromRGB(60, 60, 60)
 
--- Drag Bar
+
 local DragBar = Instance.new("Frame")
 DragBar.Name = "DragBar"
 DragBar.Size = UDim2.new(1, 0, 0, 30)
@@ -60,12 +60,12 @@ CloseBtn.MouseButton1Click:Connect(function()
     ScreenGui.Enabled = false
 end)
 
--- Input Box and Button
+
 local InputBox = Instance.new("TextBox")
 InputBox.Name = "NameBox"
 InputBox.PlaceholderText = "Enter player name..."
 InputBox.ClearTextOnFocus = false
-InputBox.Text = "" -- ensure no default text inside the box
+InputBox.Text = "" 
 InputBox.Font = Enum.Font.Gotham
 InputBox.TextSize = 16
 InputBox.TextColor3 = Color3.fromRGB(230, 230, 230)
@@ -87,7 +87,7 @@ GoBtn.Position = UDim2.new(1, -70, 0, 40)
 GoBtn.Parent = MainFrame
 Instance.new("UICorner", GoBtn).CornerRadius = UDim.new(0, 6)
 
--- Notification helper
+
 local function notify(title, text, duration)
     StarterGui:SetCore("SendNotification", {
         Title = title or "TeleportUI";
@@ -96,7 +96,7 @@ local function notify(title, text, duration)
     })
 end
 
--- Teleport Function
+
 local function teleportTo(nameStr)
     if not nameStr or nameStr == "" then
         notify("Error","Please enter a player name.")
@@ -115,7 +115,7 @@ local function teleportTo(nameStr)
         notify("Player Not Found","No player matches '"..nameStr.."'.")
         return
     end
-    -- Ensure character loaded
+
     local function getHRP(char)
         return char and char:FindFirstChild("HumanoidRootPart")
     end
@@ -125,7 +125,7 @@ local function teleportTo(nameStr)
         local mineHRP = getHRP(myChar)
         local theirsHRP = getHRP(theirChar)
         if not mineHRP or not theirsHRP then error("Character missing HumanoidRootPart.") end
-        -- Teleport
+
         mineHRP.CFrame = theirsHRP.CFrame + Vector3.new(0,3,0)
     end)
     if success then
@@ -135,7 +135,7 @@ local function teleportTo(nameStr)
     end
 end
 
--- Connect handlers
+
 GoBtn.MouseButton1Click:Connect(function()
     teleportTo(InputBox.Text)
 end)
@@ -143,7 +143,7 @@ InputBox.FocusLost:Connect(function(enter)
     if enter then teleportTo(InputBox.Text) end
 end)
 
--- Smooth Dragging
+
 local dragging, dragInput, dragStart, startPos
 DragBar.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -173,7 +173,7 @@ UserInputService.InputChanged:Connect(function(input)
     end
 end)
 
--- Toggle Visibility
+
 UserInputService.InputBegan:Connect(function(input, gp)
     if not gp and input.KeyCode == Enum.KeyCode.K then
         ScreenGui.Enabled = not ScreenGui.Enabled
